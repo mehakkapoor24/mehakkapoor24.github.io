@@ -1,0 +1,639 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mehak Kapoor — Senior Project Manager</title>
+<meta name="description" content="Portfolio of Mehak Kapoor, Senior Project Manager — transformation delivery, governance and measurable business outcomes.">
+<meta property="og:title" content="Mehak Kapoor — Senior Project Manager">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0b1220;--bg-soft:#101a2c;--surface:#152238;--surface-2:#1d2d47;
+  --border:#2b3d5c;--border-soft:#1f2e48;
+  --text:#eef2f8;--muted:#aeb8ca;--faint:#6f7e96;
+  --teal:#3fd0be;--amber:#f4b04f;--coral:#ff7a59;--green:#6fcf97;
+  --grid:rgba(238,242,248,.035);
+  --display:'Space Grotesk',sans-serif;--body:'Inter',sans-serif;--mono:'JetBrains Mono',monospace;
+  --r:10px;--rl:16px;--ease:cubic-bezier(.16,.84,.32,1);
+}
+:root[data-theme="light"]{
+  --bg:#f6f4ee;--bg-soft:#ffffff;--surface:#ffffff;--surface-2:#ece9e0;
+  --border:#cfc9ba;--border-soft:#e1dccf;
+  --text:#14213d;--muted:#52607a;--faint:#8a93a6;
+  --teal:#0f766e;--amber:#b86f0a;--coral:#d6492a;--green:#2f8f5b;--grid:rgba(20,33,61,.05);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;overflow-x:clip}
+body{margin:0;background:var(--bg);color:var(--text);font:16px/1.65 var(--body);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+h1,h2,h3,p,ul{margin:0}
+h1,h2,h3{font-family:var(--display);font-weight:600;letter-spacing:-.01em}
+::selection{background:var(--teal);color:var(--bg)}
+
+/* grid backdrop */
+.backdrop{position:fixed;inset:0;z-index:0;pointer-events:none;
+  background-image:linear-gradient(to right,var(--grid) 1px,transparent 1px),linear-gradient(to bottom,var(--grid) 1px,transparent 1px);background-size:64px 64px;
+  -webkit-mask-image:linear-gradient(to bottom,rgba(0,0,0,.9),rgba(0,0,0,.15) 70%,transparent);mask-image:linear-gradient(to bottom,rgba(0,0,0,.9),rgba(0,0,0,.15) 70%,transparent)}
+main{position:relative;z-index:1;overflow-x:clip}
+#bar{position:fixed;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--teal),var(--amber));transform:scaleX(0);transform-origin:left;z-index:200}
+
+/* top bar */
+.topbar{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:14px 28px;background:color-mix(in srgb,var(--bg) 72%,transparent);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid var(--border-soft)}
+.brand{display:flex;align-items:center;gap:10px;font-family:var(--mono);font-size:13px;color:var(--muted);border:1px solid var(--border);background:var(--surface);padding:6px 12px;border-radius:6px}
+.brand b{color:var(--teal)}
+.tabs{display:flex;align-items:center;gap:4px;overflow-x:auto;scrollbar-width:none}
+.tabs::-webkit-scrollbar{display:none}
+.tab{font:13px var(--mono);color:var(--muted);padding:8px 16px;border-radius:6px 6px 0 0;white-space:nowrap;position:relative;transition:.2s}
+.tab:hover{color:var(--text);background:var(--surface)}
+.tab.on{color:var(--text);background:var(--surface)}
+.tab.on::after{content:'';position:absolute;left:8px;right:8px;bottom:-1px;height:2px;background:var(--teal);border-radius:2px}
+.theme{font:14px var(--mono);background:none;border:1px solid var(--border);color:var(--muted);width:34px;height:34px;border-radius:6px;cursor:pointer;margin-left:6px;transition:.2s}
+.theme:hover{color:var(--text);border-color:var(--teal)}
+
+/* layout */
+.section{padding:120px 28px;max-width:1180px;margin:0 auto;position:relative}
+.head{margin-bottom:52px;max-width:640px}
+.cell-tag{display:inline-block;font:12px var(--mono);color:var(--teal);background:color-mix(in srgb,var(--teal) 10%,transparent);border:1px solid color-mix(in srgb,var(--teal) 28%,transparent);padding:4px 10px;border-radius:6px;margin-bottom:16px;letter-spacing:.04em}
+.title{font-size:clamp(2rem,4.5vw,3rem);margin-bottom:10px}
+.sub{color:var(--muted);font-size:1.05rem;max-width:46ch}
+.reveal{opacity:0;translate:0 26px;transition:opacity .8s var(--ease),translate .8s var(--ease);transition-delay:var(--d,0s)}
+.reveal.in{opacity:1;translate:0 0}
+
+/* hero */
+.hero{min-height:100vh;display:grid;grid-template-columns:1.1fr .9fr;gap:56px;align-items:center;padding-top:140px;padding-bottom:80px}
+.eyebrow{display:flex;align-items:center;gap:10px;font:13px var(--mono);color:var(--muted);margin-bottom:24px}
+.dot{width:8px;height:8px;border-radius:50%;background:var(--green);box-shadow:0 0 0 4px color-mix(in srgb,var(--green) 18%,transparent)}
+.name{font-size:clamp(2.8rem,8vw,5.6rem);line-height:1.05;margin-bottom:26px}
+.sel{position:relative;display:inline-block}
+.sel::before{content:'';position:absolute;inset:-6px -10px;border:2.5px solid var(--teal);border-radius:4px;background:color-mix(in srgb,var(--teal) 7%,transparent);pointer-events:none}
+.sel::after{content:'';position:absolute;bottom:-12px;right:-14px;width:11px;height:11px;background:var(--teal);border-radius:2px}
+.role{font:clamp(1rem,2.2vw,1.3rem) var(--mono);color:var(--amber);margin-bottom:22px}
+.role i{font-style:normal;color:var(--faint)}
+.desc{font-size:1.08rem;color:var(--muted);max-width:50ch;margin-bottom:34px}
+.actions{display:flex;flex-wrap:wrap;gap:14px;margin-bottom:56px}
+.btn{display:inline-flex;align-items:center;gap:10px;font:600 .96rem var(--display);padding:15px 26px;border-radius:999px;border:1.5px solid transparent;transition:transform .35s var(--ease),background .25s,color .25s,border-color .25s}
+.btn:hover{transform:translateY(-3px)}
+.btn.p{background:var(--teal);color:var(--bg)}
+.btn.p:hover{background:var(--amber)}
+.btn.g{border-color:var(--border);color:var(--text)}
+.btn.g:hover{border-color:var(--amber);color:var(--amber)}
+.stats{display:flex;flex-wrap:wrap;gap:44px}
+.stat b{display:block;font:700 2.1rem var(--display)}
+.stat span{font:12.5px var(--mono);color:var(--faint)}
+
+/* tilt cards */
+[data-tilt]{transform-style:preserve-3d;will-change:transform;transition:transform .12s linear,border-color .3s}
+[data-tilt].rest{transition:transform .55s var(--ease),border-color .3s}
+[data-tilt]::after{content:'';position:absolute;inset:0;border-radius:inherit;pointer-events:none;background:radial-gradient(320px circle at var(--gx,50%) var(--gy,50%),rgba(255,255,255,.08),transparent 60%);opacity:0;transition:opacity .3s}
+[data-tilt]:hover::after{opacity:1}
+
+/* hero glance card */
+.glance{border:1px solid var(--border);border-radius:var(--rl);background:var(--bg-soft);padding:26px;position:relative}
+.glance h3{font-size:1.1rem}
+.glance .gs{font:12px var(--mono);color:var(--faint);margin:2px 0 22px}
+.g-row{display:grid;grid-template-columns:78px 1fr;gap:12px;align-items:center;padding:9px 0;border-top:1px solid var(--border-soft);font:12px var(--mono);color:var(--muted)}
+.g-tr{position:relative;height:14px;background:repeating-linear-gradient(90deg,var(--border-soft) 0 1px,transparent 1px 20%)}
+.g-tr i{position:absolute;top:2px;bottom:2px;left:var(--l);width:var(--w);min-width:6px;border-radius:99px;background:var(--c);transform:scaleX(0);transform-origin:left;transition:transform 1.1s var(--ease) calc(var(--d) + .4s)}
+.in .g-tr i,.glance.in .g-tr i{transform:none}
+.g-ax{position:relative;height:16px;margin:2px 0 0 90px;font:10px var(--mono);color:var(--faint)}
+.g-ax span{position:absolute;top:0;transform:translateX(-50%)}
+
+/* ledger */
+.ledger{border:1px solid var(--border-soft);border-radius:var(--rl);overflow:hidden}
+.lhead,.lrow{display:grid;grid-template-columns:64px 1fr 130px 230px;gap:18px}
+.lhead{padding:14px 24px;background:var(--surface);border-bottom:1px solid var(--border-soft);font:11px var(--mono);text-transform:uppercase;letter-spacing:.1em;color:var(--faint)}
+.lrow{padding:32px 24px;border-bottom:1px solid var(--border-soft);border-left:3px solid transparent;transition:background .3s,border-color .3s}
+.lrow:hover{background:var(--surface);border-left-color:var(--teal)}
+.lnum{font:700 1.4rem var(--mono);color:var(--faint);transition:color .3s}
+.lrow:hover .lnum{color:var(--teal)}
+.lmain h3{font-size:1.25rem;margin-bottom:10px}
+.lmain h3 span{font:400 1rem var(--body);color:var(--muted)}
+.lbul{list-style:none;padding:0;margin:0 0 16px;display:flex;flex-direction:column;gap:8px}
+.lbul li{position:relative;padding-left:20px;color:var(--muted);font-size:.95rem}
+.lbul li::before{content:'';position:absolute;left:0;top:.55em;width:8px;height:8px;border:1.5px solid var(--amber);border-radius:2px}
+.tags{display:flex;flex-wrap:wrap;gap:8px}
+.tags span{font:12px var(--mono);color:var(--amber);background:color-mix(in srgb,var(--amber) 9%,transparent);border:1px solid color-mix(in srgb,var(--amber) 22%,transparent);padding:4px 10px;border-radius:999px}
+.ldet{display:grid;grid-template-rows:0fr;transition:grid-template-rows .5s var(--ease)}
+.ldet>div{overflow:hidden;min-height:0}
+.lrow.open .ldet{grid-template-rows:1fr;margin-top:16px}
+.dl{font:11px var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--teal);margin-bottom:8px}
+.ldet ul{padding-left:18px;display:grid;gap:6px;color:var(--muted);font-size:.9rem}
+.ldet ul.tick{list-style:none;padding:0}
+.ldet ul.tick li{padding-left:20px;position:relative;color:var(--text)}
+.ldet ul.tick li::before{content:'✓';position:absolute;left:0;color:var(--teal)}
+.more-btn{margin-top:14px;font:12px var(--mono);background:none;border:1px solid var(--border);color:var(--muted);padding:6px 12px;border-radius:999px;cursor:pointer;transition:.2s}
+.more-btn:hover{color:var(--teal);border-color:var(--teal)}
+.lper{font:.9rem var(--mono);color:var(--muted)}
+.lper span{color:var(--faint)}
+.limp{display:flex;flex-direction:column;gap:8px}
+.limp b{font:700 2rem var(--display);color:var(--green);line-height:1}
+.limp span{font:11.5px var(--mono);color:var(--faint);line-height:1.5}
+.mbar{height:6px;border-radius:99px;background:var(--surface-2);overflow:hidden;margin-top:4px}
+.mbar i{display:block;height:100%;width:0;border-radius:99px;background:linear-gradient(90deg,var(--teal),var(--amber));transition:width 1.4s var(--ease) .3s}
+.in .mbar i{width:var(--w)}
+.dots{display:flex;gap:7px;margin-top:6px}
+.dots i{width:10px;height:10px;border-radius:50%;background:var(--surface-2);transition:background .4s calc(var(--i)*.1s + .3s)}
+.in .dots i{background:var(--teal)}
+.lsum{display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;padding:18px 24px;font:12px var(--mono);background:var(--surface);border-top:2px double var(--border);color:var(--muted)}
+.lsum b{color:var(--teal);letter-spacing:.08em;font-weight:500}
+
+/* projects */
+.pgrid{display:grid;grid-template-columns:repeat(2,1fr);gap:24px}
+.pgrid .extra{display:none}
+.pgrid.all .extra{display:block}
+.pcard{position:relative;border:1px solid var(--border-soft);border-radius:var(--rl);background:var(--bg-soft)}
+.pcard:hover{border-color:var(--border)}
+.vis{height:150px;padding:26px 28px 0;display:flex;align-items:center;gap:22px}
+.donut{width:96px;height:96px;flex:none;transform:rotate(-90deg)}
+.d-bg{fill:none;stroke:var(--surface-2);stroke-width:8}
+.d-fg{fill:none;stroke:var(--teal);stroke-width:8;stroke-linecap:round;stroke-dasharray:var(--c);stroke-dashoffset:var(--c);transition:stroke-dashoffset 1.6s var(--ease) .3s}
+.in .d-fg{stroke-dashoffset:var(--o)}
+.pcard:hover .d-fg{stroke:var(--amber)}
+.d-tx{fill:var(--text);font:700 14px var(--mono);text-anchor:middle;transform:rotate(90deg);transform-origin:45px 45px}
+.vlab{font:13px var(--mono);color:var(--muted);max-width:18ch;line-height:1.5}
+.pipe{width:100%;height:auto;overflow:visible}
+.p-ln{stroke:var(--border);stroke-width:2;stroke-dasharray:4 5}
+.p-n circle{fill:var(--surface-2);stroke:var(--border);stroke-width:2;transition:fill .4s calc(var(--i)*.15s + .3s),stroke .4s calc(var(--i)*.15s + .3s)}
+.in .p-n circle{fill:var(--teal);stroke:var(--teal)}
+.pcard:hover .in .p-n circle,.pcard:hover .p-n circle{stroke:var(--amber)}
+.p-tx{fill:var(--faint);font:10px var(--mono);text-anchor:middle}
+.six{display:flex;gap:10px}
+.six i{width:22px;height:22px;border-radius:50%;background:var(--surface-2);transition:background .4s calc(var(--i)*.1s + .3s)}
+.in .six i{background:var(--teal)}
+.pbody{padding:22px 28px 28px;position:relative}
+.pref{position:absolute;top:-14px;right:28px;font:700 11px var(--mono);color:var(--bg);background:var(--amber);padding:3px 8px;border-radius:4px}
+.pbody h3{font-size:1.3rem;margin-bottom:8px;padding-right:70px}
+.pbody p{color:var(--muted);margin-bottom:18px}
+.more-wrap{text-align:center;margin-top:36px}
+
+/* skills */
+.sgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border-soft);border:1px solid var(--border-soft);border-radius:var(--rl);overflow:hidden}
+.scell{background:var(--bg-soft);padding:26px;display:flex;flex-direction:column;gap:18px;transition:background .3s}
+.scell:hover{background:var(--surface)}
+.stop{display:flex;align-items:baseline;gap:12px}
+.sn{font:12px var(--mono);color:var(--teal)}
+.stop h3{font-size:1.1rem}
+.creds{display:grid;grid-template-columns:repeat(6,1fr);gap:1px;background:var(--border-soft);border:1px solid var(--border-soft);border-radius:var(--rl);overflow:hidden;margin-top:24px}
+.cert{background:var(--bg-soft);padding:22px;display:flex;flex-direction:column;gap:6px;transition:background .3s}
+.cert:hover{background:var(--surface)}
+.cert b{font:700 1.2rem var(--display)}
+.cert span{font:11px var(--mono);color:var(--faint);text-transform:uppercase;letter-spacing:.06em}
+.edu{display:grid;grid-template-columns:repeat(5,1fr);gap:22px;margin-top:34px;padding-top:30px;border-top:1px solid var(--border-soft)}
+.ed span{display:block;font:12px var(--mono);color:var(--teal);margin-bottom:6px}
+.ed b{display:block;font:600 .92rem var(--body);line-height:1.4}
+.ed em{font:normal 12px var(--mono);color:var(--faint)}
+
+/* contact */
+.cgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.ccard{border:1px solid var(--border-soft);border-radius:var(--rl);padding:30px 20px;display:flex;flex-direction:column;align-items:center;text-align:center;gap:8px;position:relative;transition:border-color .3s,background .3s,transform .3s var(--ease)}
+.ccard:hover{border-color:var(--teal);background:var(--surface);transform:translateY(-4px)}
+.ccard .ic{font:700 1.5rem var(--display);color:var(--teal)}
+.ccard .lb{font:11px var(--mono);text-transform:uppercase;letter-spacing:.12em;color:var(--faint)}
+.ccard .vl{font-size:.95rem;word-break:break-word}
+.ccard .rf{position:absolute;top:12px;right:14px;font:10px var(--mono);color:var(--faint)}
+footer{position:relative;z-index:1;text-align:center;padding:48px 28px 64px;color:var(--faint);font-size:.85rem;border-top:1px solid var(--border-soft)}
+footer div{font-family:var(--mono);margin-top:6px}
+
+/* responsive */
+@media (max-width:1000px){
+  .hero{grid-template-columns:1fr;min-height:0}
+  .sgrid{grid-template-columns:repeat(2,1fr)}
+  .creds{grid-template-columns:repeat(3,1fr)}
+  .edu{grid-template-columns:repeat(3,1fr)}
+  .cgrid{grid-template-columns:repeat(2,1fr)}
+}
+@media (max-width:820px){
+  .pgrid{grid-template-columns:1fr}
+  .lhead{display:none}
+  .lrow{grid-template-columns:1fr;gap:14px;padding:26px 20px}
+  .lnum{display:none}
+  .lper br{display:none}
+  .lper span{margin-left:4px}
+  .topbar{padding:12px 16px}
+  .brand span{display:none}
+  .section{padding:90px 20px}
+}
+@media (max-width:560px){
+  .sgrid,.creds,.edu,.cgrid{grid-template-columns:1fr 1fr}
+  .sgrid{grid-template-columns:1fr}
+  .stats{gap:28px}
+}
+
+.name{font-size:clamp(2.4rem,5.4vw,4.4rem);white-space:nowrap}
+.mk{display:block;width:84px;height:5px;margin-top:18px;border-radius:3px;background:linear-gradient(90deg,var(--teal),var(--amber))}
+.stats{display:grid;grid-template-columns:repeat(4,auto);justify-content:start;gap:34px}
+button.btn{background:transparent;cursor:pointer;font-family:var(--display)}
+button.btn.g{color:var(--text)}
+.vis{height:160px}
+.pipe{width:430px;max-width:100%}
+.p-tx{font-size:8.5px}
+@media (max-width:560px){.stats{grid-template-columns:repeat(2,auto);gap:24px 30px}.name{white-space:normal}}
+.stat span{display:block;line-height:1.45;margin-top:4px}
+
+/* ===== polish ===== */
+#home::before{content:'';position:absolute;right:-8%;top:6%;width:680px;height:680px;border-radius:50%;background:radial-gradient(circle,color-mix(in srgb,var(--teal) 13%,transparent),transparent 65%);pointer-events:none;z-index:-1}
+#home::after{content:'';position:absolute;left:-12%;bottom:4%;width:520px;height:520px;border-radius:50%;background:radial-gradient(circle,color-mix(in srgb,var(--amber) 8%,transparent),transparent 65%);pointer-events:none;z-index:-1}
+.title::after{content:'';display:block;width:56px;height:3px;margin-top:16px;border-radius:2px;background:linear-gradient(90deg,var(--teal),var(--amber))}
+.caret{display:inline-block;width:2px;height:1.05em;background:var(--teal);margin-left:5px;vertical-align:-3px;animation:blink 1s step-end infinite}
+@keyframes blink{50%{opacity:0}}
+.role{min-height:1.6em}
+.cue{position:absolute;bottom:26px;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:8px;font:11px var(--mono);letter-spacing:.2em;text-transform:uppercase;color:var(--faint)}
+.cue i{width:1px;height:34px;background:linear-gradient(var(--teal),transparent);animation:bob 1.8s ease-in-out infinite}
+@keyframes bob{0%,100%{transform:scaleY(.5);transform-origin:top}50%{transform:scaleY(1);transform-origin:top}}
+@media (max-width:1000px){.cue{display:none}}
+
+.lc{display:grid;gap:0}
+.lcr{display:grid;grid-template-columns:34px 78px 1fr;gap:10px;align-items:center;padding:12px 0;border-top:1px solid var(--border-soft);position:relative}
+.lcr b{font:700 12px var(--mono);color:#0b1220;background:var(--c);border-radius:8px;width:28px;height:28px;display:grid;place-items:center}
+.lcr span{font:600 .95rem var(--display);color:var(--text)}
+.lcr em{font:normal 11.5px var(--mono);color:var(--faint)}
+.lcr::after{content:'';position:absolute;left:0;bottom:-1px;height:2px;width:0;background:var(--c);transition:width 1s var(--ease) calc(var(--d) + .3s)}
+.glance.in .lcr::after{width:100%}
+@media (max-width:520px){.lcr{grid-template-columns:30px 1fr}.lcr em{grid-column:2}}
+.rg{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.rt{border:1px solid var(--border-soft);border-radius:14px;background:var(--surface);padding:16px 14px;display:flex;flex-direction:column;align-items:center;gap:10px;text-align:center}
+.rt .donut{width:86px;height:86px}
+.rt .vlab{max-width:none;font-size:11.5px}
+.rt .vlab b{display:block;color:var(--text);font:600 12px var(--mono);margin-bottom:2px}
+.rt:nth-child(2) .d-fg{stroke:var(--amber)}.rt:nth-child(3) .d-fg{stroke:var(--coral)}.rt:nth-child(4) .d-fg{stroke:#6aa8ff}
+.glance.in .d-fg{stroke-dashoffset:var(--o)}
+/* hero card depth + floating badges */
+.glance{transform-style:preserve-3d}
+.glance .z1{transform:translateZ(14px)}.glance .z2{transform:translateZ(22px)}.glance .z3{transform:translateZ(34px)}
+.fb{position:absolute;font:600 12px var(--mono);padding:7px 13px;border-radius:9px;background:var(--surface);border:1px solid var(--border);color:var(--text);box-shadow:0 14px 30px -14px rgba(0,0,0,.6);animation:fl 5s ease-in-out infinite}
+.fb::before{content:'';display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--teal);margin-right:8px}
+.f1{top:-16px;right:26px;transform:translateZ(60px)}
+.f2{bottom:58px;right:-18px;transform:translateZ(80px);animation-delay:-1.6s}
+.f3{bottom:-14px;left:34px;transform:translateZ(70px);animation-delay:-3.2s}
+@keyframes fl{0%,100%{translate:0 0}50%{translate:0 -8px}}
+
+/* marquee */
+.marquee{position:relative;z-index:1;border-top:1px solid var(--border-soft);border-bottom:1px solid var(--border-soft);background:color-mix(in srgb,var(--bg-soft) 70%,transparent);overflow:hidden;padding:18px 0}
+.mq{-webkit-mask-image:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent);mask-image:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent)}
+.mt{display:flex;width:max-content;animation:mq 46s linear infinite}
+.mt span{font:12px var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--faint);padding:0 28px;white-space:nowrap;position:relative}
+.mt span::after{content:'◆';position:absolute;right:-5px;color:var(--teal);font-size:8px;top:50%;translate:0 -50%}
+@keyframes mq{to{transform:translateX(-50%)}}
+.marquee:hover .mt{animation-play-state:paused}
+
+/* ledger polish */
+.lrow:hover{background:linear-gradient(90deg,color-mix(in srgb,var(--teal) 7%,transparent),transparent 55%),var(--surface)}
+
+/* projects: true 3D depth */
+.pcard{overflow:visible}
+.pcard .vis{transform:translateZ(34px)}
+.pcard .pbody h3{transform:translateZ(26px)}
+.pcard .pbody p{transform:translateZ(14px)}
+.pcard .pbody .tags{transform:translateZ(18px)}
+.pcard .pref{transform:translateZ(46px);box-shadow:0 8px 18px -8px rgba(0,0,0,.6)}
+.pcard:hover{box-shadow:0 30px 60px -30px rgba(0,0,0,.7),0 0 0 1px color-mix(in srgb,var(--teal) 25%,transparent)}
+
+/* skills: icons + hover line */
+.scell{position:relative}
+.scell::before{content:'';position:absolute;left:0;top:0;height:2px;width:0;background:linear-gradient(90deg,var(--teal),var(--amber));transition:width .6s var(--ease)}
+.scell:hover::before{width:100%}
+.si{display:grid;place-items:center;width:44px;height:44px;border-radius:12px;background:color-mix(in srgb,var(--teal) 10%,transparent);border:1px solid color-mix(in srgb,var(--teal) 24%,transparent);flex:none;transition:transform .45s var(--ease),background .3s}
+.si svg{width:22px;height:22px;fill:none;stroke:var(--teal);stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round;transition:stroke .3s}
+.scell:hover .si{transform:rotate(-8deg) scale(1.1);background:color-mix(in srgb,var(--amber) 14%,transparent)}
+.scell:hover .si svg{stroke:var(--amber)}
+.stop{align-items:center;gap:14px}
+.cert{position:relative}
+.cert::before{content:'';position:absolute;left:0;top:0;height:2px;width:0;background:var(--amber);transition:width .5s var(--ease)}
+.cert:hover::before{width:100%}
+
+/* cursor ring + footer */
+.cur{position:fixed;top:0;left:0;width:34px;height:34px;margin:-17px 0 0 -17px;border:1.5px solid var(--teal);border-radius:50%;pointer-events:none;z-index:300;opacity:0;transition:width .3s var(--ease),height .3s var(--ease),margin .3s var(--ease),background .3s,opacity .3s,border-color .3s}
+.cur.on{opacity:.8}
+.cur.big{width:60px;height:60px;margin:-30px 0 0 -30px;background:color-mix(in srgb,var(--teal) 10%,transparent);border-color:var(--amber)}
+@media (hover:none),(pointer:coarse){.cur{display:none}}
+.top{display:inline-block;margin-bottom:14px;font:12px var(--mono);color:var(--muted);border:1px solid var(--border);padding:6px 14px;border-radius:999px;transition:.2s}
+.top:hover{color:var(--teal);border-color:var(--teal)}
+.btn{will-change:transform}
+
+/* passport */
+.about{display:grid;grid-template-columns:1fr 1.15fr;gap:56px;align-items:center}
+.about .head{margin-bottom:0}
+.pass{max-width:400px;margin-left:auto;position:relative;font-size:.9rem;border:1px solid var(--border);border-radius:var(--rl);background:var(--surface);padding:22px 24px;transform-style:preserve-3d;box-shadow:0 30px 60px -30px rgba(0,0,0,.6)}
+.pass .ph{display:flex;align-items:center;gap:16px;padding-bottom:16px;border-bottom:1px dashed var(--border);transform:translateZ(30px)}
+.pass .av{width:46px;height:46px;border-radius:14px;display:grid;place-items:center;font:700 1.35rem var(--display,inherit);color:#0b1220;background:linear-gradient(135deg,var(--teal),var(--amber))}
+.pass .pn{font:700 1.1rem var(--display,inherit);color:var(--text)}
+.pass .pt{font:12px var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--faint);margin-top:2px}
+.pass dl{margin:0}
+.pass .pr{display:grid;grid-template-columns:84px 1fr;gap:12px;padding:11px 0;border-bottom:1px dashed var(--border-soft);transform:translateZ(18px)}
+.pass .pr:last-child{border-bottom:0;padding-bottom:0}
+.pass dt{font:600 11px var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--teal);padding-top:3px}
+.pass dd{margin:0;color:var(--muted);font-size:.85rem;line-height:1.55}
+.pf1{top:-16px;left:40px;transform:translateZ(60px)}
+.pf2{top:-16px;right:26px;transform:translateZ(80px);animation-delay:-1.6s}
+.pf3{top:30%;right:-40px;transform:translateZ(70px);animation-delay:-3.2s}
+.pf4{bottom:20%;right:-52px;transform:translateZ(90px);animation-delay:-2.4s}
+.pf5{bottom:-16px;right:50px;transform:translateZ(75px);animation-delay:-.8s}
+.pf6{top:62%;left:-70px;transform:translateZ(85px);animation-delay:-4s}
+@media (max-width:900px){.about{grid-template-columns:1fr;gap:36px}.pass .pr{grid-template-columns:88px 1fr}}
+@media (max-width:820px){.fb{display:none}}
+@media (prefers-reduced-motion:reduce){.mt,.fb,.cue i,.caret{animation:none!important}}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}.reveal{opacity:1;translate:0 0}}
+</style>
+</head>
+<body>
+<div class="backdrop" aria-hidden="true"></div>
+<div id="bar"></div>
+<div class="cur" id="cur" aria-hidden="true"></div>
+
+<header class="topbar">
+  <div class="brand"><b>MK</b><span>Mehak Kapoor</span></div>
+  <nav class="tabs" aria-label="Sections">
+    <a class="tab on" href="#home">Home</a>
+    <a class="tab" href="#experience">Experience</a>
+    <a class="tab" href="#projects">Projects</a>
+    <a class="tab" href="#skills">Skills</a>
+    <a class="tab" href="#contact">Contact</a>
+    <button class="theme" id="theme" aria-label="Toggle light and dark">◐</button>
+  </nav>
+</header>
+
+<main>
+<!-- HOME -->
+<section id="home" class="section hero">
+  <div>
+    <p class="eyebrow"><span class="dot"></span> open to roles in melbourne &amp; mumbai</p>
+    <h1 class="name">Mehak Kapoor<span class="mk"></span></h1>
+    <p class="role"><span id="roleText">Senior Project Manager</span><span class="caret"></span></p>
+    <p class="desc">Proven expertise in leading cross-functional teams, managing risks and dependencies, and coordinating requirements, platform integrations, testing, release readiness and go-live. Skilled in translating business and technical objectives into executable delivery plans while strengthening governance, stakeholder alignment and measurable business outcomes.</p>
+    <div class="actions">
+      <a class="btn p" href="#projects">View Projects →</a>
+      <a class="btn g" href="Mehak-Kapoor-CV.pdf" download>Download CV</a>
+    </div>
+    <div class="stats">
+      <div class="stat"><b data-count="12" data-suf="+">0</b><span>years delivering</span></div>
+      <div class="stat"><b data-count="40" data-suf="+">0</b><span>projects delivered</span></div>
+      <div class="stat"><b data-count="6" data-suf="">0</b><span>domains</span></div>
+    </div>
+  </div>
+  <div class="pass reveal" id="glance" data-tilt>
+    <span class="fb pf1">Banking</span><span class="fb pf2">Health Insurance</span><span class="fb pf3">Tolling</span><span class="fb pf4">Education</span><span class="fb pf5">Taxation</span><span class="fb pf6">Security</span>
+    <div class="ph"><div class="av">MK</div><div><div class="pn">Delivery passport</div></div></div>
+    <dl>
+      <div class="pr"><dt>Role</dt><dd>Senior Project Manager</dd></div>
+      <div class="pr"><dt>Methods</dt><dd>Agile · Waterfall · Hybrid</dd></div>
+      <div class="pr"><dt>Platforms</dt><dd>Planview · Jira · ServiceNow · SAP SuccessFactors · Salesforce</dd></div>
+      <div class="pr"><dt>Based in</dt><dd>Melbourne, Australia</dd></div>
+      <div class="pr"><dt>Open to</dt><dd>Melbourne, Australia · Mumbai, India</dd></div>
+    </dl>
+  </div>
+</section>
+
+<div class="marquee" aria-label="Organisations I have delivered for"><div class="mq"><div class="mt">
+<span>ANZ</span><span>Bupa</span><span>Accenture</span><span>Transurban</span><span>Australian Taxation Office</span><span>Victorian Department of Education</span><span>Lucid Labs</span><span>BMW Financial Services</span><span>Infosys</span>
+<span>ANZ</span><span>Bupa</span><span>Accenture</span><span>Transurban</span><span>Australian Taxation Office</span><span>Victorian Department of Education</span><span>Lucid Labs</span><span>BMW Financial Services</span><span>Infosys</span>
+</div></div></div>
+
+<!-- EXPERIENCE -->
+<section id="experience" class="section">
+  <div class="head reveal"><span class="cell-tag">01 · career</span><h2 class="title">Experience</h2><p class="sub">Roles, and the numbers that moved.</p></div>
+  <div class="ledger">
+    <div class="lhead"><span>#</span><span>Role</span><span>Period</span><span>Impact</span></div>
+    <div class="lrow reveal" style="--d:0.00s">
+  <div class="lnum">01</div>
+  <div class="lmain"><h3>Senior Project Manager<span> · Bupa Australia</span></h3>
+    <ul class="lbul"><li>Portfolio governance in Planview</li><li>CRM, workflow automation and discount compliance</li></ul>
+    <div class="tags"><span>Planview</span><span>Portfolio</span><span>CRM</span></div>
+    <div class="ldet"><div><p class="dl">Bupa Australia, Melbourne — Strategic Programs, Health Insurance (APAC)</p><ul><li>Operate across a portfolio of strategic transformation initiatives spanning Healthcare Programs, Operations &amp; Enablement, and Digital Sales &amp; Frontline Effectiveness.</li><li>Lead governance and delivery oversight on CRM transformation, operational performance improvement, workflow automation, process standardisation, contract management modernisation and discount compliance.</li><li>Manage portfolio governance in Planview: initiative planning, milestones, dependencies, financial tracking, benefits realisation, risk oversight and executive reporting.</li><li>Partner with Directors, General Managers, Initiative Owners, sales, compliance and technology teams to align priorities and outcomes.</li><li>Run governance forums and delivery assurance across multiple initiatives; lead Business Analysts on requirements, process mapping, current-state assessment and future-state design.</li></ul><p class="dl" style="margin-top:12px">Key achievements</p><ul class="tick"><li>Took responsibility for six concurrent transformation initiatives across three strategic enterprise workstreams within the first two months.</li></ul></div></div>
+    <button class="more-btn" aria-expanded="false">Details +</button></div>
+  <div class="lper">Apr 2026<br><span>– Oct 2026</span></div>
+  <div class="limp"><b data-v>6</b><span>concurrent initiatives owned within two months</span><div class="dots"><i style="--i:0"></i><i style="--i:1"></i><i style="--i:2"></i><i style="--i:3"></i><i style="--i:4"></i><i style="--i:5"></i></div></div>
+</div>
+<div class="lrow reveal" style="--d:0.05s">
+  <div class="lnum">02</div>
+  <div class="lmain"><h3>Delivery Manager (Consulting)<span> · Lucid Labs</span></h3>
+    <ul class="lbul"><li>Governance set up in a low-maturity program</li><li>Delivery oversight of a Fabric, OneLake and Power BI program</li></ul>
+    <div class="tags"><span>Microsoft Fabric</span><span>Power BI</span><span>RAID</span></div>
+    <div class="ldet"><div><p class="dl">Lucid Labs, Melbourne (Remote) — Australia Food &amp; Fibre Technology Uplift &amp; Data Modernisation</p><ul><li>Provided delivery oversight and governance for a program on Microsoft Fabric, OneLake and Power BI, keeping execution aligned to agreed scope, milestones and outcomes.</li><li>Acted as the primary interface between technical delivery teams and client stakeholders.</li><li>Reviewed delivery artefacts (plans, risks, dependencies, financial status, progress reports) in an environment of initially low delivery maturity.</li><li>Translated the Data Modernisation Assessment and Statement of Work into governed milestones, checkpoints and a reporting cadence.</li><li>Established lightweight governance (RAID logs, cadence, status reporting) to improve transparency, accountability and executive visibility.</li></ul><p class="dl" style="margin-top:12px">Key achievements</p><ul class="tick"><li>Improved governance visibility and tracking efficiency by approximately 25% through structured RAID management, milestone governance and executive reporting.</li><li>Reduced reporting turnaround effort by approximately 20% by streamlining governance processes and stakeholder coordination across Microsoft Fabric, Power BI, OneLake and NetSuite integration work.</li></ul></div></div>
+    <button class="more-btn" aria-expanded="false">Details +</button></div>
+  <div class="lper">Jan 2026<br><span>– Apr 2026</span></div>
+  <div class="limp"><b data-v>~25%</b><span>better governance visibility</span><div class="mbar"><i style="--w:62%"></i></div></div>
+</div>
+<div class="lrow reveal" style="--d:0.10s">
+  <div class="lnum">03</div>
+  <div class="lmain"><h3>Project Manager (Acting Product Owner)<span> · ANZ Banking Group</span></h3>
+    <ul class="lbul"><li>20+ projects across banking, payments and HR</li><li>AI assistant in ANZ Plus: +25% self-service</li></ul>
+    <div class="tags"><span>ServiceNow</span><span>SAP SuccessFactors</span><span>Scrum</span></div>
+    <div class="ldet"><div><p class="dl">ANZ Banking Group, Melbourne</p><ul><li>Led end-to-end delivery of 20+ strategic projects across core banking modernisation, real-time payments and HR transformation, managing 60+ change requests through ServiceNow.</li><li>Acted as Product Owner for digital and HR platforms: backlogs, story prioritisation and release alignment with business and compliance goals.</li><li>Led integration of an AI-powered virtual assistant within the ANZ Plus app, increasing digital self-service adoption by 25% and reducing routine support enquiries by 30%.</li><li>Delivered the SAP SuccessFactors rollout (HR, Payroll, Learning, Performance, Compensation and Succession).</li><li>Spearheaded the GovConnex implementation for government affairs and compliance communication.</li><li>Delivered a global leadership development platform featuring Harvard, Columbia and Stanford content, increasing cross-regional engagement by 25%.</li><li>Served as Scrum Master and Change Manager across four cross-functional squads.</li></ul><p class="dl" style="margin-top:12px">Key achievements</p><ul class="tick"><li>Led change and communications for SAP SuccessFactors, enabling adoption across 5,000+ employees and reducing post-go-live support tickets by 40%.</li><li>Accelerated release cycles by 20% and reduced rework through cross-functional collaboration.</li><li>Improved delivery efficiency by 15% and compliance traceability by implementing 60+ ServiceNow change workflows.</li></ul></div></div>
+    <button class="more-btn" aria-expanded="false">Details +</button></div>
+  <div class="lper">May 2021<br><span>– Feb 2025</span></div>
+  <div class="limp"><b data-v>−40%</b><span>post-go-live tickets, SAP SuccessFactors</span><div class="mbar"><i style="--w:100%"></i></div></div>
+</div>
+<div class="lrow reveal" style="--d:0.15s">
+  <div class="lnum">04</div>
+  <div class="lmain"><h3>Application Development Analyst<span> · Accenture Australia</span></h3>
+    <ul class="lbul"><li>Kindergarten digitisation: −30% manual effort</li><li>ATO regulatory work: 100% compliance alignment</li></ul>
+    <div class="tags"><span>Salesforce</span><span>Agile</span><span>ATO</span></div>
+    <div class="ldet"><div><p class="dl">Accenture Australia, Melbourne — Transurban, Victorian Department of Education, ATO</p><ul><li>Managed tolling system enhancements for Transurban, coordinating testing, delivery and automation to improve payment accuracy and back-office performance.</li><li>Led digital transformation across 10+ public kindergartens: modernised legacy billing and implemented an AI-enabled chatbot with live progress dashboards, reducing manual effort by 30% and increasing operational efficiency by 25%.</li><li>Designed secure, compliance-aligned solutions for the Australian Taxation Office.</li><li>Authored 100+ Agile user stories and 50+ test cases; facilitated training workshops and change enablement.</li><li>Supported IT operating model transformations for BFSI and government portfolios.</li></ul><p class="dl" style="margin-top:12px">Key achievements</p><ul class="tick"><li>Transurban: improved service delivery accuracy by 25% across multi-vendor teams.</li><li>Victorian Department of Education: streamlined reporting and compliance across 200+ institutions with a centralised data-tracking solution.</li><li>ATO: ensured 100% compliance alignment on a large-scale regulatory transformation.</li></ul></div></div>
+    <button class="more-btn" aria-expanded="false">Details +</button></div>
+  <div class="lper">Aug 2019<br><span>– May 2021</span></div>
+  <div class="limp"><b data-v>+25%</b><span>service delivery accuracy, Transurban</span><div class="mbar"><i style="--w:62%"></i></div></div>
+</div>
+<div class="lrow reveal" style="--d:0.20s">
+  <div class="lnum">05</div>
+  <div class="lmain"><h3>Business Analyst<span> · BMW Financial Services</span></h3>
+    <ul class="lbul"><li>70+ critical finance data issues resolved</li><li>+20% processing accuracy, 25% faster approvals</li></ul>
+    <div class="tags"><span>Requirements</span><span>UAT</span><span>Process mapping</span></div>
+    <div class="ldet"><div><p class="dl">BMW Financial Services, Melbourne — voluntary engagement via Swinburne University partnership</p><ul><li>Conducted operational uplift assessments across finance, leasing and customer support; produced process maps and requirements documents.</li><li>Investigated and resolved 70+ critical data issues affecting finance dashboards and reporting accuracy.</li><li>Delivered functional specifications and supported UAT across multiple releases.</li></ul><p class="dl" style="margin-top:12px">Key achievements</p><ul class="tick"><li>Documented loan-processing requirements that cut manual effort by 30% and lifted processing accuracy by 20%.</li><li>Achieved 25% faster approvals and improved data quality across financial products.</li></ul></div></div>
+    <button class="more-btn" aria-expanded="false">Details +</button></div>
+  <div class="lper">Jul 2017<br><span>– Aug 2019</span></div>
+  <div class="limp"><b data-v>−30%</b><span>manual effort in loan processing</span><div class="mbar"><i style="--w:75%"></i></div></div>
+</div>
+<div class="lrow reveal" style="--d:0.25s">
+  <div class="lnum">06</div>
+  <div class="lmain"><h3>Senior Information Security Engineer<span> · Infosys</span></h3>
+    <ul class="lbul"><li>ISO 27001, PCI-DSS and SOC 1/2 audit support</li><li>Dashboards for 50+ security metrics</li></ul>
+    <div class="tags"><span>ISO 27001</span><span>PCI-DSS</span><span>Risk</span></div>
+    <div class="ldet"><div><p class="dl">Infosys Ltd., India — Information Security Group, Risk Management</p><ul><li>Provided security audit support to global BFSI clients, aligned to ISO 27001, PCI-DSS and SOC 1/2.</li><li>Built automated dashboards for 50+ security and compliance metrics, reducing audit turnaround by 20%.</li><li>Managed vendor contracts, budget forecasting and SLA tracking.</li></ul><p class="dl" style="margin-top:12px">Key achievements</p><ul class="tick"><li>Improved audit readiness by 40% and reduced incident response times by 25%.</li></ul></div></div>
+    <button class="more-btn" aria-expanded="false">Details +</button></div>
+  <div class="lper">Feb 2012<br><span>– Jun 2015</span></div>
+  <div class="limp"><b data-v>+40%</b><span>security audit readiness</span><div class="mbar"><i style="--w:100%"></i></div></div>
+</div>
+
+    <div class="lsum"><b>TOTAL</b><span>6 roles · 6 organisations · 2012 – 2026</span></div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects" class="section">
+  <div class="head reveal"><span class="cell-tag">02 · work</span><h2 class="title">Projects</h2><p class="sub">A few worth opening. Tilt to inspect.</p></div>
+  <div class="pgrid" id="pgrid">
+    <article class="pcard reveal" data-tilt style="--d:0.00s">
+  <div class="vis"><svg viewBox="0 0 90 90" class="donut" aria-hidden="true"><circle class="d-bg" cx="45" cy="45" r="36"/><circle class="d-fg" cx="45" cy="45" r="36" style="--c:226.2;--o:169.6"/><text x="45" y="50" class="d-tx">+25%</text></svg><div class="vlab">digital self-service adoption</div></div>
+  <div class="pbody"><span class="pref">ANZ</span><h3>ANZ Plus Digital Banking App</h3><p>Digital banking delivery, including an AI virtual assistant.</p><div class="tags"><span>Digital Banking</span><span>AI Assistant</span><span>Release Mgmt</span></div></div>
+</article>
+<article class="pcard reveal" data-tilt style="--d:0.06s">
+  <div class="vis"><svg viewBox="0 0 90 90" class="donut" aria-hidden="true"><circle class="d-bg" cx="45" cy="45" r="36"/><circle class="d-fg" cx="45" cy="45" r="36" style="--c:226.2;--o:135.7"/><text x="45" y="50" class="d-tx">−40%</text></svg><div class="vlab">post-go-live support tickets</div></div>
+  <div class="pbody"><span class="pref">ANZ</span><h3>SAP SuccessFactors Rollout</h3><p>Enterprise HR platform for 5,000+ employees.</p><div class="tags"><span>SAP</span><span>Change Mgmt</span><span>HR Tech</span></div></div>
+</article>
+<article class="pcard reveal" data-tilt style="--d:0.00s">
+  <div class="vis"><svg viewBox="0 0 90 90" class="donut" aria-hidden="true"><circle class="d-bg" cx="45" cy="45" r="36"/><circle class="d-fg" cx="45" cy="45" r="36" style="--c:226.2;--o:158.3"/><text x="45" y="50" class="d-tx">−30%</text></svg><div class="vlab">manual effort</div></div>
+  <div class="pbody"><span class="pref">Vic. Dept of Education</span><h3>Salesforce Dashboards &amp; Reporting</h3><p>Dashboards for Victorian kindergarten services.</p><div class="tags"><span>Salesforce</span><span>Dashboards</span><span>Government</span></div></div>
+</article>
+<article class="pcard reveal" data-tilt style="--d:0.06s">
+  <div class="vis"><svg viewBox="0 0 90 90" class="donut" aria-hidden="true"><circle class="d-bg" cx="45" cy="45" r="36"/><circle class="d-fg" cx="45" cy="45" r="36" style="--c:226.2;--o:0.0"/><text x="45" y="50" class="d-tx">100%</text></svg><div class="vlab">compliance alignment</div></div>
+  <div class="pbody"><span class="pref">ATO</span><h3>ATO Digital Services Enhancements</h3><p>Customer-facing enhancements to ATO services.</p><div class="tags"><span>Regulatory</span><span>Privacy</span><span>Testing</span></div></div>
+</article>
+<article class="pcard reveal" data-tilt style="--d:0.00s">
+  <div class="vis"><svg viewBox="0 0 90 90" class="donut" aria-hidden="true"><circle class="d-bg" cx="45" cy="45" r="36"/><circle class="d-fg" cx="45" cy="45" r="36" style="--c:226.2;--o:169.6"/><text x="45" y="50" class="d-tx">~25%</text></svg><div class="vlab">governance visibility</div></div>
+  <div class="pbody"><span class="pref">Lucid Labs</span><h3>Data Modernisation Program</h3><p>Microsoft Fabric, OneLake and NetSuite technology uplift.</p><div class="tags"><span>Microsoft Fabric</span><span>Power BI</span><span>Fivetran</span></div></div>
+</article>
+<article class="pcard reveal" data-tilt style="--d:0.06s">
+  <div class="vis"><svg viewBox="0 0 300 72" class="pipe" aria-hidden="true"><line class="p-ln" x1="30" y1="34" x2="270" y2="34"/><g class="p-n" style="--i:0"><circle cx="30" cy="34" r="8"/><text x="30" y="62" class="p-tx">Reqs</text></g><g class="p-n" style="--i:1"><circle cx="90" cy="34" r="8"/><text x="90" y="62" class="p-tx">Security</text></g><g class="p-n" style="--i:2"><circle cx="150" cy="34" r="8"/><text x="150" y="62" class="p-tx">SSO</text></g><g class="p-n" style="--i:3"><circle cx="210" cy="34" r="8"/><text x="210" y="62" class="p-tx">Training</text></g><g class="p-n" style="--i:4"><circle cx="270" cy="34" r="8"/><text x="270" y="62" class="p-tx">Handover</text></g></svg></div>
+  <div class="pbody"><span class="pref">ANZ</span><h3>GovConnex Implementation</h3><p>Government affairs platform, from requirements to handover.</p><div class="tags"><span>Cloud</span><span>SSO</span><span>Compliance</span></div></div>
+</article>
+<article class="pcard reveal extra" data-tilt style="--d:0.00s">
+  <div class="vis"><div class="six"><i style="--i:0"></i><i style="--i:1"></i><i style="--i:2"></i><i style="--i:3"></i><i style="--i:4"></i><i style="--i:5"></i></div><div class="vlab">concurrent initiatives</div></div>
+  <div class="pbody"><span class="pref">Bupa</span><h3>Strategic Transformation Portfolio</h3><p>CRM, workflow automation and discount compliance.</p><div class="tags"><span>Planview</span><span>Portfolio</span><span>CRM</span></div></div>
+</article>
+<article class="pcard reveal extra" data-tilt style="--d:0.06s">
+  <div class="vis"><svg viewBox="0 0 300 72" class="pipe" aria-hidden="true"><line class="p-ln" x1="30" y1="34" x2="270" y2="34"/><g class="p-n" style="--i:0"><circle cx="30" cy="34" r="8"/><text x="30" y="62" class="p-tx">Reqs</text></g><g class="p-n" style="--i:1"><circle cx="90" cy="34" r="8"/><text x="90" y="62" class="p-tx">Plan</text></g><g class="p-n" style="--i:2"><circle cx="150" cy="34" r="8"/><text x="150" y="62" class="p-tx">Test</text></g><g class="p-n" style="--i:3"><circle cx="210" cy="34" r="8"/><text x="210" y="62" class="p-tx">Fix</text></g><g class="p-n" style="--i:4"><circle cx="270" cy="34" r="8"/><text x="270" y="62" class="p-tx">Release</text></g></svg></div>
+  <div class="pbody"><span class="pref">ANZ</span><h3>ANZ Transactive Mobile App</h3><p>Global mobile app enhancements, requirements to release.</p><div class="tags"><span>Mobile</span><span>Requirements</span><span>Testing</span></div></div>
+</article>
+<article class="pcard reveal extra" data-tilt style="--d:0.00s">
+  <div class="vis"><svg viewBox="0 0 300 72" class="pipe" aria-hidden="true"><line class="p-ln" x1="30" y1="34" x2="270" y2="34"/><g class="p-n" style="--i:0"><circle cx="30" cy="34" r="8"/><text x="30" y="62" class="p-tx">Reqs</text></g><g class="p-n" style="--i:1"><circle cx="90" cy="34" r="8"/><text x="90" y="62" class="p-tx">Vendor</text></g><g class="p-n" style="--i:2"><circle cx="150" cy="34" r="8"/><text x="150" y="62" class="p-tx">Security</text></g><g class="p-n" style="--i:3"><circle cx="210" cy="34" r="8"/><text x="210" y="62" class="p-tx">Test</text></g><g class="p-n" style="--i:4"><circle cx="270" cy="34" r="8"/><text x="270" y="62" class="p-tx">Deploy</text></g></svg></div>
+  <div class="pbody"><span class="pref">ANZ</span><h3>Faethm Workforce Analytics</h3><p>SaaS workforce analytics platform onboarding.</p><div class="tags"><span>SaaS</span><span>Vendor Mgmt</span><span>Security</span></div></div>
+</article>
+<article class="pcard reveal extra" data-tilt style="--d:0.06s">
+  <div class="vis"><svg viewBox="0 0 300 72" class="pipe" aria-hidden="true"><line class="p-ln" x1="30" y1="34" x2="270" y2="34"/><g class="p-n" style="--i:0"><circle cx="30" cy="34" r="8"/><text x="30" y="62" class="p-tx">Integrate</text></g><g class="p-n" style="--i:1"><circle cx="90" cy="34" r="8"/><text x="90" y="62" class="p-tx">Validate</text></g><g class="p-n" style="--i:2"><circle cx="150" cy="34" r="8"/><text x="150" y="62" class="p-tx">Approve</text></g><g class="p-n" style="--i:3"><circle cx="210" cy="34" r="8"/><text x="210" y="62" class="p-tx">Cutover</text></g><g class="p-n" style="--i:4"><circle cx="270" cy="34" r="8"/><text x="270" y="62" class="p-tx">Deploy</text></g></svg></div>
+  <div class="pbody"><span class="pref">ANZ</span><h3>SuperChoice Platform Migration</h3><p>Superannuation reporting moved to an accredited platform.</p><div class="tags"><span>Migration</span><span>Regulatory</span><span>Data</span></div></div>
+</article>
+<article class="pcard reveal extra" data-tilt style="--d:0.00s">
+  <div class="vis"><svg viewBox="0 0 300 72" class="pipe" aria-hidden="true"><line class="p-ln" x1="30" y1="34" x2="270" y2="34"/><g class="p-n" style="--i:0"><circle cx="30" cy="34" r="8"/><text x="30" y="62" class="p-tx">Build</text></g><g class="p-n" style="--i:1"><circle cx="90" cy="34" r="8"/><text x="90" y="62" class="p-tx">Onboard</text></g><g class="p-n" style="--i:2"><circle cx="150" cy="34" r="8"/><text x="150" y="62" class="p-tx">Test</text></g><g class="p-n" style="--i:3"><circle cx="210" cy="34" r="8"/><text x="210" y="62" class="p-tx">Deploy</text></g><g class="p-n" style="--i:4"><circle cx="270" cy="34" r="8"/><text x="270" y="62" class="p-tx">Support</text></g></svg></div>
+  <div class="pbody"><span class="pref">ANZ</span><h3>EdCast Learning Platform</h3><p>Digital learning experience platform.</p><div class="tags"><span>Learning</span><span>Onboarding</span><span>Deployment</span></div></div>
+</article>
+<article class="pcard reveal extra" data-tilt style="--d:0.06s">
+  <div class="vis"><svg viewBox="0 0 300 72" class="pipe" aria-hidden="true"><line class="p-ln" x1="30" y1="34" x2="270" y2="34"/><g class="p-n" style="--i:0"><circle cx="30" cy="34" r="8"/><text x="30" y="62" class="p-tx">Engage</text></g><g class="p-n" style="--i:1"><circle cx="90" cy="34" r="8"/><text x="90" y="62" class="p-tx">Security</text></g><g class="p-n" style="--i:2"><circle cx="150" cy="34" r="8"/><text x="150" y="62" class="p-tx">Test</text></g><g class="p-n" style="--i:3"><circle cx="210" cy="34" r="8"/><text x="210" y="62" class="p-tx">Enable</text></g><g class="p-n" style="--i:4"><circle cx="270" cy="34" r="8"/><text x="270" y="62" class="p-tx">Deploy</text></g></svg></div>
+  <div class="pbody"><span class="pref">ANZ</span><h3>ExecOnline Learning Platform</h3><p>Digital executive learning platform rollout.</p><div class="tags"><span>Executive</span><span>Vendor Mgmt</span><span>Readiness</span></div></div>
+</article>
+<article class="pcard reveal extra" data-tilt style="--d:0.00s">
+  <div class="vis"><svg viewBox="0 0 90 90" class="donut" aria-hidden="true"><circle class="d-bg" cx="45" cy="45" r="36"/><circle class="d-fg" cx="45" cy="45" r="36" style="--c:226.2;--o:169.6"/><text x="45" y="50" class="d-tx">+25%</text></svg><div class="vlab">service delivery accuracy</div></div>
+  <div class="pbody"><span class="pref">Transurban</span><h3>Linkt App &amp; Digital Experience</h3><p>Customer-facing digital initiatives for Linkt.</p><div class="tags"><span>Linkt</span><span>Multi-vendor</span><span>Release Mgmt</span></div></div>
+</article>
+
+  </div>
+  <div class="more-wrap"><button class="btn g" id="showAll">Show all 13 projects</button></div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills" class="section">
+  <div class="head reveal"><span class="cell-tag">03 · toolkit</span><h2 class="title">Skills &amp; Credentials</h2><p class="sub">What I use to get work from idea to go-live.</p></div>
+  <div class="sgrid"><div class="scell reveal" style="--d:0.00s"><div class="stop"><span class="si"><svg viewBox="0 0 24 24" aria-hidden="true"><path d='M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z'/><path d='M8.5 12l2.5 2.5 4.5-5'/></svg></span><h3>Delivery &amp; Governance</h3></div><div class="tags"><span>Portfolio governance</span><span>Benefits realisation</span><span>RAID management</span><span>Executive reporting</span><span>Delivery assurance</span></div></div><div class="scell reveal" style="--d:0.05s"><div class="stop"><span class="si"><svg viewBox="0 0 24 24" aria-hidden="true"><path d='M4 12a8 8 0 0 1 14-5.3L20 9'/><path d='M20 4v5h-5'/><path d='M20 12a8 8 0 0 1-14 5.3L4 15'/><path d='M4 20v-5h5'/></svg></span><h3>Methods</h3></div><div class="tags"><span>Agile</span><span>Waterfall</span><span>Hybrid</span><span>Scrum</span><span>PMP / PMBOK</span><span>Change management</span></div></div><div class="scell reveal" style="--d:0.10s"><div class="stop"><span class="si"><svg viewBox="0 0 24 24" aria-hidden="true"><path d='M14.7 6.3a4 4 0 0 0-5.4 5.4L3 18l3 3 6.3-6.3a4 4 0 0 0 5.4-5.4l-2.6 2.6-2.4-.6-.6-2.4z'/></svg></span><h3>Tools</h3></div><div class="tags"><span>Planview</span><span>Jira</span><span>Confluence</span><span>ServiceNow</span><span>Salesforce</span><span>Power BI</span><span>MS Project</span></div></div><div class="scell reveal" style="--d:0.15s"><div class="stop"><span class="si"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx='6' cy='6' r='2'/><circle cx='18' cy='6' r='2'/><circle cx='12' cy='18' r='2'/><path d='M7.5 7.5L11 16M16.5 7.5L13 16M8 6h8'/></svg></span><h3>AI &amp; Data</h3></div><div class="tags"><span>AI-enabled delivery</span><span>AI product management</span><span>Google Cloud</span><span>Data &amp; analytics programs</span></div></div><div class="scell reveal" style="--d:0.20s"><div class="stop"><span class="si"><svg viewBox="0 0 24 24" aria-hidden="true"><path d='M4 21V8l8-5 8 5v13'/><path d='M9 21v-6h6v6'/><path d='M4 21h16'/></svg></span><h3>Domains</h3></div><div class="tags"><span>Banking</span><span>Health insurance</span><span>Tolling</span><span>Education</span><span>Taxation</span><span>Security</span></div></div><div class="scell reveal" style="--d:0.25s"><div class="stop"><span class="si"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx='9' cy='8' r='3'/><path d='M3 20c0-3.3 2.7-6 6-6s6 2.7 6 6'/><circle cx='17' cy='9' r='2.5'/><path d='M17 14c2.5 0 4.5 2 4.5 4.5'/></svg></span><h3>Ways of working</h3></div><div class="tags"><span>Requirements workshops</span><span>UAT coordination</span><span>Go-live support</span><span>Vendor management</span><span>Distributed teams</span></div></div></div>
+  <div class="creds"><div class="cert reveal" style="--d:0.00s"><b>PMP®</b><span>PMI</span></div><div class="cert reveal" style="--d:0.05s"><b>CSPO®</b><span>Scrum Alliance</span></div><div class="cert reveal" style="--d:0.10s"><b>CSM®</b><span>Scrum Alliance</span></div><div class="cert reveal" style="--d:0.15s"><b>MIT xPro</b><span>AI Products &amp; Services</span></div><div class="cert reveal" style="--d:0.20s"><b>GCDL</b><span>Google Cloud</span></div><div class="cert reveal" style="--d:0.25s"><b>ISO 27001</b><span>Lead Auditor · BSI</span></div></div>
+  <div class="edu"><div class="ed"><span>2024</span><b>Professional Certificate, Product Management</b><em>S.P. Jain</em></div><div class="ed"><span>2020</span><b>PG Program, AI &amp; Machine Learning</b><em>UT Austin</em></div><div class="ed"><span>2017</span><b>Master of Information Technology</b><em>Swinburne</em></div><div class="ed"><span>2015</span><b>MBA, IT Management</b><em>Symbiosis</em></div><div class="ed"><span>2011</span><b>BE, Computer Engineering</b><em>Univ. of Pune</em></div></div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="section">
+  <div class="head reveal"><span class="cell-tag">04 · contact</span><h2 class="title">Let's talk delivery</h2><p class="sub">Got a program to deliver? My inbox is open.</p></div>
+  <div class="cgrid">
+    <a class="ccard reveal" href="mailto:mehak.kapoor24@gmail.com"><span class="ic">@</span><span class="lb">Email</span><span class="vl">mehak.kapoor24@gmail.com</span></a>
+    <a class="ccard reveal" style="--d:.06s" href="https://www.linkedin.com/in/mehakkapoor24/" target="_blank" rel="noopener"><span class="ic">in</span><span class="lb">LinkedIn</span><span class="vl">/in/mehakkapoor24</span></a>
+    <a class="ccard reveal" style="--d:.12s" href="Mehak-Kapoor-CV.pdf" download><span class="ic">↓</span><span class="lb">Résumé</span><span class="vl">Download CV</span></a>
+    <div class="ccard reveal" style="--d:.18s"><span class="ic">◎</span><span class="lb">Based in</span><span class="vl">Melbourne, Australia</span></div>
+    <div class="ccard reveal" style="--d:.24s"><span class="ic">◎</span><span class="lb">Open to roles in</span><span class="vl">Melbourne · Mumbai</span></div>
+  </div>
+</section>
+</main>
+
+<footer><a class="top" href="#home">Back to top ↑</a><br>© <span id="yr">2026</span> Mehak Kapoor — delivered on schedule.</footer>
+
+<script>
+(function(){
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var fine = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+  document.getElementById('yr').textContent = new Date().getFullYear();
+
+  /* theme (dark by default) */
+  var root = document.documentElement;
+  try{ var t = localStorage.getItem('theme'); if(t) root.setAttribute('data-theme', t); }catch(e){}
+  document.getElementById('theme').addEventListener('click', function(){
+    var next = root.getAttribute('data-theme')==='light' ? 'dark' : 'light'; root.setAttribute('data-theme', next);
+    try{ localStorage.setItem('theme', next); }catch(e){}
+  });
+
+  /* 3D tilt (same feel as a spreadsheet-style card: ~10deg, perspective 1000, slight scale) */
+  if(fine && !reduce){
+    document.querySelectorAll('[data-tilt]').forEach(function(c){
+      c.addEventListener('pointermove', function(e){
+        var r = c.getBoundingClientRect(), x = (e.clientX-r.left)/r.width - .5, y = (e.clientY-r.top)/r.height - .5;
+        c.classList.remove('rest');
+        c.style.transform = 'perspective(1000px) rotateX('+(-y*10).toFixed(2)+'deg) rotateY('+(x*12).toFixed(2)+'deg) scale3d(1.02,1.02,1.02)';
+        c.style.setProperty('--gx',(x+.5)*100+'%'); c.style.setProperty('--gy',(y+.5)*100+'%');
+      });
+      c.addEventListener('pointerleave', function(){ c.classList.add('rest'); c.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) scale3d(1,1,1)'; });
+    });
+  }
+
+  /* reveal */
+  var io = new IntersectionObserver(function(es){ es.forEach(function(en){ if(en.isIntersecting){ en.target.classList.add('in'); io.unobserve(en.target); } }); }, {threshold:.12});
+  document.querySelectorAll('.reveal').forEach(function(el){ io.observe(el); });
+
+  /* count-up */
+  var cio = new IntersectionObserver(function(es){ es.forEach(function(en){
+    if(!en.isIntersecting) return; var el = en.target, tg = +el.dataset.count, suf = el.dataset.suf||'', t0 = null;
+    function step(ts){ if(!t0) t0 = ts; var p = Math.min((ts-t0)/1400,1), e = 1-Math.pow(1-p,3); el.textContent = Math.round(tg*e).toLocaleString() + (p===1?suf:''); if(p<1) requestAnimationFrame(step); }
+    reduce ? (el.textContent = tg.toLocaleString()+suf) : requestAnimationFrame(step); cio.unobserve(el);
+  }); }, {threshold:.6});
+  document.querySelectorAll('[data-count]').forEach(function(el){ cio.observe(el); });
+
+  /* ledger details */
+  document.querySelectorAll('.more-btn').forEach(function(b){ b.addEventListener('click', function(){
+    var r = b.closest('.lrow'), o = r.classList.toggle('open'); b.setAttribute('aria-expanded', o); b.textContent = o ? 'Details −' : 'Details +';
+  }); });
+
+  /* show all projects */
+  var g = document.getElementById('pgrid'), sa = document.getElementById('showAll');
+  sa.addEventListener('click', function(){
+    var open = g.classList.toggle('all'); sa.textContent = open ? 'Show fewer' : 'Show all 13 projects';
+    if(open) g.querySelectorAll('.extra').forEach(function(c){ c.classList.add('in'); });
+  });
+
+  /* nav state + progress */
+  var tabs = document.querySelectorAll('.tab');
+  var so = new IntersectionObserver(function(es){ es.forEach(function(en){ if(en.isIntersecting){ tabs.forEach(function(a){ a.classList.toggle('on', a.getAttribute('href')==='#'+en.target.id); }); } }); }, {rootMargin:'-45% 0px -50% 0px'});
+  document.querySelectorAll('main section').forEach(function(s){ so.observe(s); });
+  var bar = document.getElementById('bar');
+  window.addEventListener('scroll', function(){ var h = document.documentElement.scrollHeight - innerHeight; bar.style.transform = 'scaleX('+(h>0 ? scrollY/h : 0)+')'; }, {passive:true});
+
+  /* role typewriter */
+  var rt = document.getElementById('roleText');
+  var roles = ['Senior Project Manager','Business Transformation','AI-Driven Transformation','Digital Product Delivery','Portfolio Governance'];
+  if(!reduce && rt){
+    var ri = 0, ci = roles[0].length, del = true;
+    (function tick(){
+      var w = roles[ri];
+      if(del){ ci--; rt.textContent = w.slice(0,ci); if(ci===0){ del = false; ri = (ri+1)%roles.length; } setTimeout(tick, 32); }
+      else { ci++; rt.textContent = roles[ri].slice(0,ci); if(ci===roles[ri].length){ del = true; setTimeout(tick, 2200); } else setTimeout(tick, 60); }
+    })();
+    setTimeout(function(){}, 0);
+  }
+
+  /* magnetic buttons */
+  if(fine && !reduce){
+    document.querySelectorAll('.btn').forEach(function(b){
+      b.addEventListener('pointermove', function(e){ var r = b.getBoundingClientRect(); var x = (e.clientX-(r.left+r.width/2))*.22, y = (e.clientY-(r.top+r.height/2))*.3; b.style.transform = 'translate('+x.toFixed(1)+'px,'+y.toFixed(1)+'px)'; });
+      b.addEventListener('pointerleave', function(){ b.style.transform = ''; });
+    });
+  }
+
+  /* cursor ring */
+  if(fine && !reduce){
+    var cur = document.getElementById('cur'), cx = 0, cy = 0, tx = 0, ty = 0, shown = false;
+    window.addEventListener('pointermove', function(e){ tx = e.clientX; ty = e.clientY; if(!shown){ shown = true; cx = tx; cy = ty; cur.classList.add('on'); } });
+    document.addEventListener('pointerleave', function(){ cur.classList.remove('on'); shown = false; });
+    (function loop(){ cx += (tx-cx)*.2; cy += (ty-cy)*.2; cur.style.transform = 'translate('+cx.toFixed(1)+'px,'+cy.toFixed(1)+'px)'; requestAnimationFrame(loop); })();
+    document.addEventListener('pointerover', function(e){ cur.classList.toggle('big', !!e.target.closest('a,button,[data-tilt],.scell,.cert,.lrow')); });
+  }
+})();
+</script>
+</body>
+</html>
